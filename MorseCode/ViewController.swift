@@ -22,7 +22,9 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    //Peter Brennan Code
+    
     @IBAction func flashlight(_ sender: UIButton) {
         if sender.titleLabel?.text == "ON" {
             sender.setTitle("OFF", for: .normal)
@@ -38,7 +40,6 @@ class ViewController: UIViewController {
     // https://stackoverflow.com/questions/46945104/type-avcapturedevice-has-no-member-defaultdevice
     // and from Joshua Dance's stackoverflow answer:
     // https://stackoverflow.com/questions/27207278/how-to-turn-flashlight-on-and-off-in-swift/27334447
-    
     
     func toggleTorch(on: Bool) {
         guard let device = AVCaptureDevice.default(for: AVMediaType.video)
@@ -63,7 +64,48 @@ class ViewController: UIViewController {
         }
     }
     
+    //Chris Diaz Code
     
-    
+    @IBOutlet weak var textInput: UITextField!
+    @IBOutlet weak var inputResult: UITextField!
+    @IBAction func changeText(_ sender: UIButton) {
+        
+        let text = textInput.text!.lowercased()
+        let morseText = ["a": ".-", "b": "-...", "c": "-.-.", "d": "-..", "e": ".", "f": "..-.", "g": "--.", "h": "....", "i": "..", "j": ".---", "k": "-.-", "l": ".-..", "m": "--", "n": "-.", "o": "---", "p": ".--.", "q": "--.-", "r": ".-.", "s": "...", "t": "-", "u": "..-", "v": "...-", "w": ".--", "x": "-..-", "y": "-.--", "z": "--.."]
+        
+        for i in morseText {
+            let newText = text.replacingOccurrences(of: i.key, with: i.value)
+            inputResult.text = newText
+        }
+        
+//        var textCount = text.count
+//        var loopCount = 0
+        
+//        repeat {
+//
+//            if text.contains("a") {
+//                textCount = text.count
+//                loopCount = loopCount + 1
+//                let newText = text.replacingOccurrences(of: "a", with: ".-")
+//                inputResult.text = newText
+//            }
+//
+//            if text.contains("b") {
+//                textCount = text.count
+//                loopCount = loopCount + 1
+//                let newText = text.replacingOccurrences(of: "b", with: "-...")
+//                inputResult.text = newText
+//            }
+//
+//            if text.contains("c") {
+//                textCount = text.count
+//                loopCount = loopCount + 1
+//                let newText = text.replacingOccurrences(of: "", with: "-.-.")
+//                inputResult.text = newText
+//            }
+//        } while loopCount <= textCount
+    }
 }
 
+//morseAlphabet = [".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."]
+//alphabetText = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
