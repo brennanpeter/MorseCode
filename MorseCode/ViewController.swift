@@ -70,14 +70,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var inputResult: UITextField!
     @IBAction func changeText(_ sender: UIButton) {
         
-        let text = textInput.text!.lowercased()
-        let morseText = ["a": ".-", "b": "-...", "c": "-.-.", "d": "-..", "e": ".", "f": "..-.", "g": "--.", "h": "....", "i": "..", "j": ".---", "k": "-.-", "l": ".-..", "m": "--", "n": "-.", "o": "---", "p": ".--.", "q": "--.-", "r": ".-.", "s": "...", "t": "-", "u": "..-", "v": "...-", "w": ".--", "x": "-..-", "y": "-.--", "z": "--.."]
+        var text = textInput.text!.lowercased()
+        let morseText: [String: String] = ["a": ".-", "b": "-...", "c": "-.-.", "d": "-..", "e": ".", "f": "..-.", "g": "--.", "h": "....", "i": "..", "j": ".---", "k": "-.-", "l": ".-..", "m": "--", "n": "-.", "o": "---", "p": ".--.", "q": "--.-", "r": ".-.", "s": "...", "t": "-", "u": "..-", "v": "...-", "w": ".--", "x": "-..-", "y": "-.--", "z": "--.."]
         
-        for i in morseText {
-            let newText = text.replacingOccurrences(of: i.key, with: i.value)
-            inputResult.text = newText
+        
+        for (key, value) in morseText {
+            text = text.replacingOccurrences(of: key, with: value)
         }
-        
+        inputResult.text = text
 //        var textCount = text.count
 //        var loopCount = 0
         
